@@ -29,7 +29,7 @@ const basketSlice = createSlice({
                 
                 addProductToBasket: {
                         reducer ( state, action) {
-                                state.products.push(action.payload)
+                                state.products && state.products.push(action.payload)
                         },
                         prepare (name, price) {
                                 return { 
@@ -44,11 +44,19 @@ const basketSlice = createSlice({
                         }
                 },
 
-                removeProductFromBasket : (state, action) => {
-                        const { id } = action.payload;
-                        console.log("id", id)
-                        let filtered = state.products.filter(product => product.id === id);
-                        console.log(filtered)
+                removeProductFromBasket : (state, {payload: {id}}) => {
+                        // const { id } = action.payload;
+                        // console.log("id", id)
+
+
+                        state.products.filter(product => product.id !== id);
+                        
+                        return state.products;
+
+                        
+                        // return state.filter(todo => todo.id !== action.payload.id);
+                        // console.log("filtered", filtered)
+                        // state.products.push(filtered);
                 }
 
         }

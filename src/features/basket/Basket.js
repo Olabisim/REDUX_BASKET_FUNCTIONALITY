@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addProductToBasket, removeProductFromBasket } from "./basketSlice";
+import BasketItem from "./BasketItem";
 
 
 
@@ -15,10 +16,6 @@ const Basket = () => {
 
         // console.log(products)
         
-        useEffect(() => {
-
-        }, [products])
-
 
         const addProductHandler = () => {
                 
@@ -29,25 +26,6 @@ const Basket = () => {
                 setName("")
                 setPrice("")
         }
-
-        const removeItem = (id) => (
-                dispatch(removeProductFromBasket({id}))
-        )
-
-        let productContainer = products.map(product => (
-
-                <div key={product.id}>
-                
-                        <p>NAME: {product.name}</p>
-                        <p>QUANTITY: {product.quantity}</p>
-                        <p>PRICE: {product.price}</p>
-
-                        <button onClick={removeItem(product.id)}>REMOVE {product.name}</button>
-                        <hr />
-                        <hr />
-                </div>
-
-        ))
 
         const onNameChange = (e) => {
                 setName(e.target.value)
@@ -82,20 +60,21 @@ const Basket = () => {
                         </button>
 
                         <div>
-                                {products.map(product => (
+                        {
+                                products 
+                                &&
+                                products.map((product) => (
 
-                                        <div key={product.id}>
-                                        
-                                                <p>NAME: {product.name}</p>
-                                                <p>QUANTITY: {product.quantity}</p>
-                                                <p>PRICE: {product.price}</p>
-                        
-                                                <button onClick={()=> dispatch(removeProductFromBasket({id: product.id}))}>REMOVE {product.name}</button>
-                                                <hr />
-                                                <hr />
-                                        </div>
-                        
-                                ))}
+                                        <BasketItem 
+                                                id={product.id} 
+                                                name={product.name} 
+                                                quantity={product.quantity} 
+                                                price={product.price} 
+                                                key={product.id} 
+                                        />
+                                ))
+
+                        }
                                 
                         </div>
 
