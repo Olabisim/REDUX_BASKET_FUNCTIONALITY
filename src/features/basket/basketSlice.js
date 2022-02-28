@@ -49,9 +49,10 @@ const basketSlice = createSlice({
                         // console.log("id", id)
 
 
-                        return products.filter(product => product.id !== id);
+                        let filteredProducts = products.filter(product => product.id !== id);
                         
-                        // return [Object.assign({products : [{}]}, products)]
+
+                        return Object.assign( {products : filteredProducts}, products);
 
                         
                         // return state.filter(todo => todo.id !== action.payload.id);
