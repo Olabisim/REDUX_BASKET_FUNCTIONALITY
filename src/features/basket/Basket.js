@@ -14,9 +14,12 @@ const Basket = () => {
         
         const products = useSelector(state => state.basket.products)
 
+        const basket = useSelector(state => state.basket)
+
         // console.log(products)
         
-
+        console.log(basket)
+ 
         const addProductHandler = () => {
                 
                 dispatch(
@@ -61,7 +64,7 @@ const Basket = () => {
 
                         <div>
                         {
-                                products 
+                                products
                                 &&
                                 products.map((product) => (
 
@@ -73,7 +76,24 @@ const Basket = () => {
                                                 key={product.id} 
                                         />
                                 ))
+                                
 
+                        }
+                        {       
+                                // basket 
+                                
+                                // &&
+                                
+                                // basket.map((product) => (
+
+                                //         <BasketItem 
+                                //                 id={product.id} 
+                                //                 name={product.name} 
+                                //                 quantity={product.quantity} 
+                                //                 price={product.price} 
+                                //                 key={product.id} 
+                                //         />
+                                // ))
                         }
                                 
                         </div>
