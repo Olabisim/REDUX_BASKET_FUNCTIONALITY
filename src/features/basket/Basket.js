@@ -61,7 +61,7 @@ const Basket = () => {
                         <button onClick={addProductHandler}>
                                 ADD PRODUCT
                         </button>
-
+                                
                         <div>
                         {
                                 products
@@ -75,6 +75,7 @@ const Basket = () => {
                                                 price={product.price} 
                                                 key={product.id} 
                                         />
+                                        
                                 ))
                                 
 

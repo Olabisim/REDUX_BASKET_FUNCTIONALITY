@@ -44,6 +44,10 @@ const basketSlice = createSlice({
                         }
                 },
 
+                quantityHandler: (state, {payload}) => {
+                       return payload.quantity = payload.quantity + 1;
+                },
+
                 removeProductFromBasket : ({products}, {payload: {id}}) => {
                         // const { id } = action.payload;
                         // console.log("id", id)
@@ -64,6 +68,6 @@ const basketSlice = createSlice({
 
 })
 
-export const {addProductToBasket, removeProductFromBasket} = basketSlice.actions;
+export const {addProductToBasket, removeProductFromBasket, quantityHandler} = basketSlice.actions;
 
 export default basketSlice.reducer;
